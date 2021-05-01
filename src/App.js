@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css';
 
-function App() {
+import AppLayout from './layouts/AppLayout/AppLayout'
+import Home from './routes/Home'
+import { BrowserRouter, Switch, Link, Route, Redirect } from 'react-router-dom'
+import MovieDataProvider from './contexts/MovieDataProvider'
+import styled from 'styled-components'
+
+function App({ className }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className={className}>
+        <MovieDataProvider>
+          <AppLayout className="app-layout">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </AppLayout>
+        </MovieDataProvider>
+      </div>
+    </BrowserRouter>
+    
   );
 }
 
-export default App;
+export default styled(App)`
+  width: 100%;
+  height: 100%;
+`;
