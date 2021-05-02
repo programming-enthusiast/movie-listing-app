@@ -52,15 +52,15 @@ function MovieListingViewer({ className }) {
       <div className="grid-container">
         {
           popularMovieList ? 
-              popularMovieList.map((item, index) => {
-                return (
-                  <>
-                    <MovieListingCard movieData={item} />
-                  </>
-                )
-              })
+            popularMovieList.map((item, index) => {
+              return (
+                <>
+                  <MovieListingCard movieData={item} />
+                </>
+              )
+            })
             :
-              null
+            null
         }
       </div>
       <div className="load-more-container">

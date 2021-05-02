@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { ReactComponent as LogoIcon } from '../../../assets/svg/logo.svg'
 import { Button } from 'antd'
+import AuthContext from '../../../contexts/AuthContext'
 
 const StyledButton = styled(Button)`
   border-radius: 15px;
@@ -22,6 +24,20 @@ const StyledButton = styled(Button)`
 `
 
 function Header({ className }) {
+
+  const navigate = useNavigate()
+  const { onLogout } = useContext(AuthContext)
+
+  const handleJoin = () => {
+    onLogout()
+    navigate('/signup')
+  }
+
+  const handleLogin = () => {
+    onLogout()
+    navigate('/login')
+  }
+
   return (
     <div className={className}>
       <div className="nav-menu-wrapper">
@@ -53,10 +69,10 @@ function Header({ className }) {
       
       <div className="right">
         <div className="join-button-container">
-          <StyledButton type="default">Join</StyledButton>
+          <StyledButton type="default" onClick={handleJoin}>Join</StyledButton>
         </div>
         <div className="login-button-container">
-          <StyledButton type="default">Login</StyledButton>
+          <StyledButton type="default" onClick={handleLogin}>Login</StyledButton>
         </div>
       </div>
 

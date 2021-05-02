@@ -8,7 +8,7 @@ import { useMediaQuery } from 'react-responsive'
 
 function AppLayout({ className, children }) {
   
-  const isDesktop = useMediaQuery({ query: '(min-width: 769px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 769px)' })
  
   return (
     <div className={className}>
@@ -19,7 +19,7 @@ function AppLayout({ className, children }) {
             {children}
             <DesktopFooter/>
           </>
-        :
+          :
           <>
             <MobileHeader />
             {children}

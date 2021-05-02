@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
 
 import MovieListingView from '../components/movie-listing/MovieListingViewer'
 import {ReactComponent as ToTopIcon} from '../assets/svg/to_top.svg'
 import { useMediaQuery } from 'react-responsive'
 
 function Home({ className }) {
-  const isDesktop = useMediaQuery({ query: '(min-width: 769px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 769px)' })
   return (
     <div className={className}>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <MovieListingView className="movie-listing-view" />
       {
         isDesktop && 
