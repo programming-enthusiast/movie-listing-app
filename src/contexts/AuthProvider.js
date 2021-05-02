@@ -13,7 +13,7 @@ const AuthProvider = props => {
   })
 
   const { children } = props
-  const mockApi = new MockApi(JSON.parse(localStorage.getItem('mockApiUsers')) || { username: 'test@test.com', password: 'test123' }, 1000)
+  const mockApi = new MockApi(JSON.parse(localStorage.getItem('mockApiUsers')) || { username: 'test@test.com', password: 'test123', age: 18 }, 1000)
 
   const onLogin = model => {
     setContextState({
@@ -25,6 +25,7 @@ const AuthProvider = props => {
         if (response.error === false) {
           localStorage.setItem('email', model.email)
           localStorage.setItem('password', model.password)
+          localStorage.setItem('age', response.age)
           setContextState({
             authorize: true,
             checkAuth: true,

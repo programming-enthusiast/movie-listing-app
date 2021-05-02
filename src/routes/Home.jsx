@@ -6,6 +6,7 @@ import MovieListingView from '../components/movie-listing/MovieListingViewer'
 import {ReactComponent as ToTopIcon} from '../assets/svg/to_top.svg'
 import { useMediaQuery } from 'react-responsive'
 
+
 function Home({ className }) {
   const isDesktop = useMediaQuery({ query: '(min-width: 769px)' })
   return (

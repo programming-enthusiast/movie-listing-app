@@ -47,7 +47,7 @@ export default class MockApi {
         users = this.getAllUsers()
         let user = users.find((user) => user.username === username && user.password === password)
         if (user) {
-          resolve({ error: false, data: users })
+          resolve({ error: false, data: users, age: user.age })
         } else {
           resolve({ error: true, data: 'Invalid User Credentials' })
         }
