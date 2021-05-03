@@ -20,8 +20,8 @@ function App({ className }) {
           <Routes>
             <AuthContext.Consumer>
               {
-                ( authorize ) => {
-                  if (authorize) {
+                ({ authorize }) => {
+                  if (!authorize) {
                     return <Navigate to="login" />
                   }
                 }

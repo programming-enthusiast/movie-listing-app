@@ -54,9 +54,7 @@ function MovieListingViewer({ className }) {
           popularMovieList ? 
             popularMovieList.map((item, index) => {
               return (
-                <>
-                  <MovieListingCard movieData={item} />
-                </>
+                <MovieListingCard movieData={item} key={index} />
               )
             })
             :
