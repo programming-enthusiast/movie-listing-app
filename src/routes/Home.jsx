@@ -5,12 +5,23 @@ import Helmet from 'react-helmet'
 import MovieListingView from '../components/movie-listing/MovieListingViewer'
 import {ReactComponent as ToTopIcon} from '../assets/svg/to_top.svg'
 import { useMediaQuery } from 'react-responsive'
+import AuthContext from '../contexts/AuthContext'
 
 
 function Home({ className }) {
   const isDesktop = useMediaQuery({ query: '(min-width: 769px)' })
   return (
     <div className={className}>
+      <AuthContext.Consumer>
+        {
+          ({ authorize }) => {
+            if (!authorize) {
+              return <Navigate to="login" />
+            }
+            console.log('authorize: ', authorize)
+          }
+        }
+      </AuthContext.Consumer>
       <Helmet>
         <title>Home</title>
       </Helmet>

@@ -10,7 +10,6 @@ import AuthProvider from './contexts/AuthProvider'
 import AuthRoute from './contexts/AuthRoute'
 import MovieDataProvider from './contexts/MovieDataProvider'
 import styled from 'styled-components'
-import AuthContext from './contexts/AuthContext'
 
 function App({ className }) {
   return (
@@ -18,15 +17,6 @@ function App({ className }) {
       <div className={className}>
         <AuthProvider><MovieDataProvider>
           <Routes>
-            <AuthContext.Consumer>
-              {
-                ({ authorize }) => {
-                  if (!authorize) {
-                    return <Navigate to="login" />
-                  }
-                }
-              }
-            </AuthContext.Consumer>
             <AuthRoute exact path="/">
               <AppLayout className="app-layout">
                 <Home />
