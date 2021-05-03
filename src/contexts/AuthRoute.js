@@ -1,29 +1,32 @@
 
 import React from 'react'
 import AuthContext from './AuthContext'
-import { Navigate, Route } from 'react-router'
+import { Route, Navigate } from 'react-router-dom'
 
-const AuthRoute = ({ component: Component, ...rest }) => (
-  <AuthContext.Consumer>
-    {({ authorize, checkAuth }) => {
-      let content = ''
+const AuthRoute = ({ component: Component, ...rest }) => {
 
-      if (authorize) {
-        content = (
-          <Route
-            render={props => (
-              <Component {...props} />
-            )}
-            {...rest}
-          />
-        )
-      } else if (checkAuth && !authorize) {
-        console.log('You must be logged in')
-        content = <Navigate to="/" />
-      }
-      return content
-    }}
-  </AuthContext.Consumer>
-)
+  return (
+    <AuthContext.Consumer>
+      {({ authorize, checkAuth }) => {
+        let content = ''
+        console.log('authorize, checkAuth, ', authorize, checkAuth)
+        if (authorize) {
+          content = (
+            <Route
+              render={props => (
+                <Component {...props} />
+              )}
+              {...rest}
+            />
+          )
+        } else {
+          console.log('You must be logged in')
+          content = <Navigate to="/login" />
+        }
+        return content
+      }}
+    </AuthContext.Consumer>
+  )
+}
 
 export default AuthRoute

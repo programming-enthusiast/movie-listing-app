@@ -5,7 +5,7 @@ import Home from './routes/Home'
 import Login from './routes/Login'
 import Signup from './routes/Signup'
 
-import { BrowserRouter, Routes, Link, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AuthProvider from './contexts/AuthProvider'
 import AuthRoute from './contexts/AuthRoute'
 import MovieDataProvider from './contexts/MovieDataProvider'
